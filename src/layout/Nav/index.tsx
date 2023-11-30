@@ -9,13 +9,13 @@ const Nav = ({ className }: NavProps) => {
                     <button>Home</button>
                 </li>
                 <li>
-                    <button>게시판</button>
+                    <button>Bulletin Board</button>
                 </li>
                 <li>
-                    <button>모집공고</button>
+                    <button>Job Offers</button>
                 </li>
                 <li>
-                    <button>기업정보</button>
+                    <button>About SI Company</button>
                 </li>
             </ul>
         </S.NavContainer>

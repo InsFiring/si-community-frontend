@@ -10,7 +10,8 @@ export const HeaderContainer = styled.header`
     width: 100%;
     height: 80px;
     padding-right: 60px;
-    background: #faf8ff;
+    color: ${({ theme }) => theme.colors.DefaultText};
+    background: ${({ theme }) => theme.colors.DefaultColor};
 
     h1 {
         display: flex;

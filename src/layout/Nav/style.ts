@@ -15,6 +15,7 @@ export const NavContainer = styled.nav`
 
         li {
             button {
+                color: ${({ theme }) => theme.colors.DefaultText};
             }
         }
     }
