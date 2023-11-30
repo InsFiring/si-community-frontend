@@ -1,14 +1,95 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended" // 가장 하단에 위치할 것
-  ],
-  "plugins": ["simple-import-sort"],
-  "rules": {
-    "simple-import-sort/imports": "warn",
-    "simple-import-sort/exports": "warn",
-    "@next/next/no-img-element": "off"
-  }
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:import/recommended",
+        "airbnb",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "plugin:react-hooks/recommended"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        },
+        "react": {
+            "version": "detect"
+        }
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-hooks",
+        "prettier",
+        "@typescript-eslint",
+        "eslint-plugin-simple-import-sort",
+        "unused-imports",
+        "simple-import-sort"
+    ],
+    "rules": {
+        "react/jsx-props-no-spreading": "off",
+        "react/react-in-jsx-scope": 0,
+        "react/prefer-stateless-function": 0,
+        "react/jsx-filename-extension": 0,
+        "react/jsx-one-expression-per-line": 0,
+        "no-nested-ternary": 0,
+        "simple-import-sort/imports": "warn",
+        "simple-import-sort/exports": "warn",
+        "@next/next/no-img-element": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "no-useless-fragment": ["off"],
+        "no-unused-vars": [
+            "off",
+            {
+                "vars": "all",
+                "args": "none",
+                "ignoreRestSiblings": false
+            }
+        ],
+        "unused-imports/no-unused-imports-ts": ["error"],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "ts": "never",
+                "tsx": "never",
+                "js": "never",
+                "jsx": "never"
+            }
+        ],
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "import/prefer-default-export": [
+            "off",
+            "warn",
+            "error",
+            {
+                "target": "any"
+            }
+        ]
+    }
 }

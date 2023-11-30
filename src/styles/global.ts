@@ -1,24 +1,45 @@
-import { createGlobalStyle } from "styled-components";
-import { reset } from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import { reset } from 'styled-reset';
+import { NotoM } from './font';
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-  
-  * {
+
+
+  *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    border: 0;
+    vertical-align: baseline;
+    font-family:${NotoM.style.fontFamily};
   }
 
-  html,
-  body {
-    font-family: "arial";
+
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
   }
-  ul, ol {
+  body {
+    line-height: 1;
+  }
+  ol, ul {
     list-style: none;
   }
-  a {
-    text-decoration: none;
-    color: inherit;
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  button{
+    cursor: pointer;
+    background: none;
+    border: none;
   }
 `;

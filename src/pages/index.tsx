@@ -1,12 +1,11 @@
-import Head from "next/head";
-import styled from "styled-components";
-const Root = styled.div``;
+import Head from 'next/head';
+import Login from './Login/index';
 
 export default function Home() {
-  return (
-    <Root>
-      <Head children={undefined}></Head>
-      SI Community Frontend Project
-    </Root>
-  );
+    return (
+        <>
+            <Head children={undefined}></Head>
+            <Login />
+        </>
+    );
 }
