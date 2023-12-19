@@ -31,6 +31,7 @@ export const HeaderContainer = styled.header`
 
         li {
             button {
+                color: #fff;
                 font-size: 12px;
             }
         }

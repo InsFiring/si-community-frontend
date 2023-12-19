@@ -12,6 +12,8 @@ export interface TextInputProps {
     label?: string;
     type?: string;
     fontSize?: string;
+    required?: boolean;
+    children?: React.ReactNode;
 }
 
 export interface TextInputStyleProps {

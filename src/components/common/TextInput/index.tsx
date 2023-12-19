@@ -13,8 +13,10 @@ const TextInput = ({
     label,
     type = 'text',
     isError = false,
+    required = false,
     errorMsg,
     fontSize = '16px',
+    children,
 }: TextInputProps) => {
     return (
         <S.TextInputContainer
@@ -35,7 +37,8 @@ const TextInput = ({
                 value={value}
                 onChange={onChange}
             />
-            <p>{errorMsg}</p>
+            {required && <p>{children}</p>}
+            {errorMsg && <p>{errorMsg}</p>}
         </S.TextInputContainer>
     );
 };

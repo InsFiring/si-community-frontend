@@ -41,10 +41,6 @@ export const TextInputContainer = styled.div<TextInputStyleProps>`
         }
     }
 
-    p {
-        display: none;
-    }
-
     ${(props) =>
         props.isError &&
         css`
