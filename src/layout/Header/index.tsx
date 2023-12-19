@@ -10,6 +10,14 @@ const Header = ({ className }: HeaderProps) => {
                 <SVG src='/svg/logo.svg'></SVG>
             </h1>
             <Nav />
+            <ul className='auth'>
+                <li>
+                    <button>Join</button>
+                </li>
+                <li>
+                    <button>Login</button>
+                </li>
+            </ul>
         </S.HeaderContainer>
     );
 };

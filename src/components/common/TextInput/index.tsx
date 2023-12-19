@@ -1,5 +1,5 @@
 import { TextInputProps } from './interface';
-import { TextInputContainer } from './style';
+import * as S from './style';
 
 const TextInput = ({
     className,
@@ -17,7 +17,7 @@ const TextInput = ({
     fontSize = '16px',
 }: TextInputProps) => {
     return (
-        <TextInputContainer
+        <S.TextInputContainer
             className={className}
             width={width}
             height={height}
@@ -36,7 +36,7 @@ const TextInput = ({
                 onChange={onChange}
             />
             <p>{errorMsg}</p>
-        </TextInputContainer>
+        </S.TextInputContainer>
     );
 };
 export default TextInput;

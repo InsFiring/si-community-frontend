@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 60px);
     height: 80px;
     padding-right: 60px;
     color: ${({ theme }) => theme.colors.DefaultText};
@@ -22,6 +22,17 @@ export const HeaderContainer = styled.header`
             width: 75px;
             height: 75px;
             cursor: pointer;
+        }
+    }
+
+    .auth {
+        display: flex;
+        gap: 0px 16px;
+
+        li {
+            button {
+                font-size: 12px;
+            }
         }
     }
 `;

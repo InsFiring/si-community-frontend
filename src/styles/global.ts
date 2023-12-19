@@ -12,6 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
     vertical-align: baseline;
     font-family:${NotoM.style.fontFamily};
+    font-size:14px;
+    color:#fff;
   }
 
 
