@@ -1,9 +1,42 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ButtonStyleProps } from './interface';
-
 export const ButtonContainer = styled.button<ButtonStyleProps>`
     cursor: pointer;
-    border: 1px solid red;
     width: ${(props) => props.width};
     height: ${(props) => props.height};
+    background: ${({ theme }) => theme.colors.DefaultColor};
+    transition: 0.5s;
+    border: none;
+    border-radius: 5px;
+
+    &:hover {
+        background: ${({ theme }) => theme.colors.HoverColor};
+    }
+
+    &:active {
+        background: ${({ theme }) => theme.colors.ActiveColor};
+    }
+
+    &:disabled {
+        background: ${({ theme }) => theme.colors.DisabledColor};
+    }
+
+    ${(props) =>
+        props.btnType === 'none' &&
+        css`
+            cursor: not-allowed;
+            opacity: 0.5;
+
+            &:hover {
+                background: ${({ theme }) => theme.colors.DefaultColor};
+            }
+
+            &:active {
+                background: ${({ theme }) => theme.colors.DefaultColor};
+            }
+
+            &:disabled {
+                background: ${({ theme }) => theme.colors.DefaultColor};
+            }
+        `};
 `;

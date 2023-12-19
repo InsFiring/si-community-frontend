@@ -4,8 +4,8 @@ import * as S from './style';
 const Button = ({
     className,
     children,
-    width = '100px',
-    height = '40px',
+    width = '75px',
+    height = '35px',
     disabled = false,
     onClick,
     btnType = 'submit',
