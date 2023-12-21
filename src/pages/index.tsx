@@ -1,13 +1,11 @@
 import Head from 'next/head';
-import SignIn from './SignIn/index';
-import SignUp from './SignUp/index';
+import Home from './home';
 
 export default function Home() {
     return (
         <>
             <Head children={undefined}></Head>
-            <SignIn />
-            <SignUp />
+            <Home />
         </>
     );
 }

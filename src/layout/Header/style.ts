@@ -33,6 +33,7 @@ export const HeaderContainer = styled.header`
             button {
                 color: #fff;
                 font-size: 12px;
+                white-space: nowrap;
             }
         }
     }
