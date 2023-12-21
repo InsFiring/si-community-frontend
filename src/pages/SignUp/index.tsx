@@ -1,7 +1,6 @@
 import Button from '@/src/components/common/Button';
 import TextInput from '@/src/components/common/TextInput';
 import useInput from '@/src/hooks/useInput';
-
 const SignUp = () => {
     const { form, setForm, onChangeInput } = useInput({
         id: '',
