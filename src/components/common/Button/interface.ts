@@ -2,16 +2,16 @@ type buttonType = 'submit' | 'error' | 'disable';
 
 export interface ButtonProps {
     className?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     width?: string;
     height?: string;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    btnType?: buttonType;
+    type?: buttonType;
 }
 
 export interface ButtonStyleProps {
     width?: string;
     height?: string;
-    btnType?: buttonType;
+    type?: buttonType;
 }

@@ -8,7 +8,7 @@ const Button = ({
     height = '35px',
     disabled = false,
     onClick,
-    btnType = 'submit',
+    type = 'submit',
 }: ButtonProps) => {
     return (
         <S.ButtonContainer
@@ -17,7 +17,7 @@ const Button = ({
             height={height}
             disabled={disabled}
             onClick={onClick}
-            btnType={btnType}
+            type={type}
         >
             {children}
         </S.ButtonContainer>

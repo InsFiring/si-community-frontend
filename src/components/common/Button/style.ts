@@ -22,7 +22,7 @@ export const ButtonContainer = styled.button<ButtonStyleProps>`
     }
 
     ${(props) =>
-        props.btnType === 'disable' &&
+        props.type === 'disable' &&
         css`
             cursor: not-allowed;
             pointer-events: none;

@@ -9,13 +9,13 @@ const TextInput = ({
     placeholder,
     width = '250px',
     accept,
-    height = '45px',
+    height = '35px',
     label,
     type = 'text',
     isError = false,
     required = false,
-    errorMsg,
-    fontSize = '16px',
+    errorMsg = '',
+    fontSize = '14px',
     children,
 }: TextInputProps) => {
     return (
@@ -26,6 +26,7 @@ const TextInput = ({
             isError={isError}
             fontSize={fontSize}
         >
+            {required && <b>✴︎</b>}
             <label htmlFor={name}>{label}</label>
 
             <input
@@ -37,8 +38,9 @@ const TextInput = ({
                 value={value}
                 onChange={onChange}
             />
-            {required && <p>{children}</p>}
-            {errorMsg && <p>{errorMsg}</p>}
+            {isError && errorMsg.length !== 0 && value?.length !== 0 && (
+                <p className='error-msg'>{errorMsg}</p>
+            )}
         </S.TextInputContainer>
     );
 };
