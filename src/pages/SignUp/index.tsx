@@ -6,7 +6,19 @@ const SignUp = () => {
         id: '',
         email: '',
         password: '',
+        rePassword: '',
     });
+
+    const isRegex =
+        form.id.length >= 2 &&
+        form.email?.includes('@') &&
+        /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/.test(
+            form.password,
+        ) &&
+        form.password.length >= 8 &&
+        form.password === form.rePassword;
+
+    console.log('isRegex', isRegex);
 
     return (
         <>
@@ -45,11 +57,22 @@ const SignUp = () => {
                         비밀번호는 대소문자, 숫자, 특수기호를 포함한 8글자
                         이상입니다.
                     </TextInput>
+                    <TextInput
+                        label='비밀번호 확인'
+                        name='rePassword'
+                        value={form.rePassword}
+                        type='password'
+                        placeholder='비밀번호 재입력'
+                        onChange={onChangeInput}
+                        required
+                    >
+                        비밀번호 확인
+                    </TextInput>
                     <div className='btn-container'>
-                        <Button btnType='none' onClick={() => {}}>
-                            취소
+                        <Button onClick={() => {}}>취소</Button>
+                        <Button btnType={isRegex ? 'submit' : 'disable'}>
+                            확인
                         </Button>
-                        <Button btnType='submit'>확인</Button>
                     </div>
                 </form>
             </div>

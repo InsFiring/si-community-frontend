@@ -22,9 +22,10 @@ export const ButtonContainer = styled.button<ButtonStyleProps>`
     }
 
     ${(props) =>
-        props.btnType === 'none' &&
+        props.btnType === 'disable' &&
         css`
             cursor: not-allowed;
+            pointer-events: none;
             opacity: 0.5;
 
             &:hover {

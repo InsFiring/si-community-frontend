@@ -8,7 +8,7 @@ export const authApi = {
                 .post(`/v1/users`, data)
                 .then((res) => {
                     console.log('join test', res);
-                    if (res.data.status.code !== 1) {
+                    if (res.data.status.code !== 201) {
                         reject(res);
                     }
 
@@ -26,7 +26,7 @@ export const authApi = {
                 .post(`/v1/users/signin`, data)
                 .then((res) => {
                     console.log('login test', res);
-                    if (res.data.status.code !== 1) {
+                    if (res.data.status.code !== 201) {
                         reject(res);
                     }
 

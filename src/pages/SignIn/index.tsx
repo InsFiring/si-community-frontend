@@ -4,9 +4,18 @@ import useInput from '@/src/hooks/useInput';
 
 const SignIn = () => {
     const { form, onChangeInput } = useInput({
-        id: '',
+        email: '',
         password: '',
     });
+
+    const isRegex =
+        form.email?.includes('@') &&
+        /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/.test(
+            form.password,
+        ) &&
+        form.password.length >= 8;
+
+    console.log('isRegex', isRegex);
 
     return (
         <>
@@ -14,14 +23,14 @@ const SignIn = () => {
                 <form method='post' onSubmit={(e) => {}}>
                     <strong>로그인 해주시기 바랍니다.</strong>
                     <TextInput
-                        label='아이디'
-                        name='id'
-                        value={form.id}
-                        placeholder='아이디 입력'
+                        label='이메일'
+                        name='email'
+                        value={form.email}
+                        placeholder='이메일 입력'
                         onChange={onChangeInput}
                         required
                     >
-                        아이디를 5글자 이상 입력해주세요.
+                        @를 포함한 이메일을 입력해주세요.
                     </TextInput>
                     <TextInput
                         label='비밀번호'
@@ -36,10 +45,10 @@ const SignIn = () => {
                         이상입니다.
                     </TextInput>
                     <div className=''>
-                        <Button btnType='none' onClick={() => {}}>
-                            회원가입
+                        <Button onClick={() => {}}>취소</Button>
+                        <Button btnType={isRegex ? 'submit' : 'disable'}>
+                            로그인
                         </Button>
-                        <Button btnType='submit'>로그인</Button>
                     </div>
                 </form>
             </div>

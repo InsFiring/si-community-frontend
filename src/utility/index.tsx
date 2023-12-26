@@ -1,22 +1,22 @@
 export const NavList = [
     {
         id: 1,
-        content: 'Home',
+        content: '홈',
         url: '/home',
     },
     {
         id: 2,
-        content: 'Bulletin Board',
+        content: '게시판',
         url: '/board',
     },
     {
         id: 3,
-        content: 'Job Offers',
+        content: '모집 공고',
         url: '/offers',
     },
     {
         id: 4,
-        content: 'About SI Company',
+        content: '회사 정보',
         url: '/company',
     },
 ];
@@ -24,12 +24,12 @@ export const NavList = [
 export const UtilMenuList = [
     {
         id: 1,
-        content: 'Sign Up',
+        content: '회원가입',
         url: '/signup',
     },
     {
         id: 2,
-        content: 'Sign In',
+        content: '로그인',
         url: '/signin',
     },
 ];

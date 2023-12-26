@@ -1,4 +1,4 @@
-type buttonType = 'submit' | 'error' | 'none';
+type buttonType = 'submit' | 'error' | 'disable';
 
 export interface ButtonProps {
     className?: string;
