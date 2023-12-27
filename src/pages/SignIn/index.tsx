@@ -1,3 +1,4 @@
+import { authApi } from '@/src/api/auth';
 import Button from '@/src/components/common/Button';
 import TextInput from '@/src/components/common/TextInput';
 import useInput from '@/src/hooks/useInput';
@@ -11,18 +12,38 @@ const SignIn = () => {
 
     const emailRegex: boolean = form.email.includes('@');
     const passwordRegex: boolean =
-        /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/.test(
+        /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$/.test(
             form.password,
         );
 
-    const isRegex = emailRegex && passwordRegex && form.password.length >= 8;
+    const isRegex = emailRegex && passwordRegex;
 
-    console.log('isRegex', isRegex);
+    const login = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!isRegex) {
+            return;
+        }
+
+        try {
+            const postData = await authApi.postSignIn(form);
+            console.log('postData', postData);
+
+            // todo:  백엔드 API 수정 완료되면 로그인 후 유저 정보 recoil 사용하여 저장 예정
+        } catch (err) {
+            console.log('err', err);
+        }
+    };
 
     return (
         <S.SignInContainer>
-            <form method='post' onSubmit={(e) => {}}>
-                <strong>로그인 해주시기 바랍니다.</strong>
+            <form
+                method='post'
+                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                    login(e);
+                }}
+            >
+                <strong>로그인</strong>
                 <TextInput
                     label='이메일'
                     name='email'
@@ -46,7 +67,10 @@ const SignIn = () => {
                 />
                 <div className=''>
                     <Button onClick={() => {}}>취소</Button>
-                    <Button type={isRegex ? 'submit' : 'disable'}>
+                    <Button
+                        onClick={() => {}}
+                        type={isRegex ? 'submit' : 'disable'}
+                    >
                         로그인
                     </Button>
                 </div>

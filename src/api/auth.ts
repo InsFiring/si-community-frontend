@@ -5,7 +5,7 @@ export const authApi = {
     postSignUp: (data: SignUpDTO) => {
         return new Promise((resolve, reject) => {
             instance
-                .post(`/v1/users`, data)
+                .post(`v1/users`, data)
                 .then((res) => {
                     console.log('join test', res);
                     if (res.data.status.code !== 201) {
@@ -23,7 +23,7 @@ export const authApi = {
     postSignIn: (data: SignInDTO) => {
         return new Promise((resolve, reject) => {
             instance
-                .post(`/v1/users/signin`, data)
+                .post(`v1/users/signin`, data)
                 .then((res) => {
                     console.log('login test', res);
                     if (res.data.status.code !== 201) {

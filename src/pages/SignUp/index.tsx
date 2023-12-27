@@ -1,3 +1,4 @@
+import { authApi } from '@/src/api/auth';
 import Button from '@/src/components/common/Button';
 import TextInput from '@/src/components/common/TextInput';
 import useInput from '@/src/hooks/useInput';
@@ -13,7 +14,7 @@ const SignUp = () => {
 
     const emailRegex: boolean = form.email.includes('@');
     const passwordRegex: boolean =
-        /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/.test(
+        /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$/.test(
             form.password,
         );
 
@@ -21,14 +22,31 @@ const SignUp = () => {
         form.id.length >= 2 &&
         emailRegex &&
         passwordRegex &&
-        form.password.length >= 8 &&
         form.password === form.rePassword;
 
-    console.log('isRegex', isRegex);
+    const Join = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!isRegex) {
+            return;
+        }
+
+        try {
+            const postData = await authApi.postSignUp(form);
+            console.log('postData', postData);
+        } catch (err) {
+            console.log('err', err);
+        }
+    };
 
     return (
         <S.SignUpContainer>
-            <form method='post' onSubmit={(e) => {}}>
+            <form
+                method='post'
+                onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                    Join(e);
+                }}
+            >
                 <strong>회원 가입</strong>
                 <TextInput
                     label='아이디'
@@ -81,7 +99,10 @@ const SignUp = () => {
 
                 <div className='btn-container'>
                     <Button onClick={() => {}}>취소</Button>
-                    <Button type={isRegex ? 'submit' : 'disable'}>
+                    <Button
+                        type={isRegex ? 'submit' : 'disable'}
+                        onClick={() => {}}
+                    >
                         회원가입
                     </Button>
                 </div>
