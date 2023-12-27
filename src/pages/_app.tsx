@@ -6,7 +6,7 @@ import {
 import type { AppProps } from 'next/app';
 // import { Orbitron } from 'next/font/google';
 import Head from 'next/head';
-import React from 'react';
+import { useState } from 'react';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import Container from '../layout/Container/index';
@@ -19,7 +19,18 @@ export const cls = (...classnames: string[]) => {
 };
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const [queryClient] = React.useState(() => new QueryClient());
+    const [queryClient] = useState(
+        () =>
+            new QueryClient({
+                defaultOptions: {
+                    queries: {
+                        retry: 1,
+                        retryDelay: 0,
+                        staleTime: 60 * 1000,
+                    },
+                },
+            }),
+    );
 
     return (
         <>

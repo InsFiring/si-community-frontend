@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const SignUpContainer = styled.article`
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
