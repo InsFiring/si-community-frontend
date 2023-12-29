@@ -1,5 +1,5 @@
 import { textareaPorps } from './interface';
-import { TextareaContainer } from './style';
+import * as S from './style';
 
 const Textarea = ({
     className,
@@ -13,7 +13,7 @@ const Textarea = ({
     errorMsg,
 }: textareaPorps) => {
     return (
-        <TextareaContainer
+        <S.TextareaContainer
             className={className}
             width={width}
             height={height}
@@ -27,7 +27,7 @@ const Textarea = ({
                 onChange={onChange}
             ></textarea>
             <p>{errorMsg}</p>
-        </TextareaContainer>
+        </S.TextareaContainer>
     );
 };
 
