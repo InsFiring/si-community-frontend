@@ -6,7 +6,7 @@ import * as S from './style';
 
 const SignUp = () => {
     const { form, setForm, onChangeInput } = useInput({
-        id: '',
+        nickname: '',
         email: '',
         password: '',
         rePassword: '',
@@ -19,7 +19,7 @@ const SignUp = () => {
         );
 
     const isRegex: boolean =
-        form.id.length >= 2 &&
+        form.nickname.length >= 2 &&
         emailRegex &&
         passwordRegex &&
         form.password === form.rePassword;
@@ -50,10 +50,12 @@ const SignUp = () => {
                 <strong>회원 가입</strong>
                 <TextInput
                     label='아이디'
-                    name='id'
-                    value={form.id}
+                    name='nickname'
+                    value={form.nickname}
                     placeholder='아이디 입력'
-                    isError={form.id.length !== 0 && form.id.length < 2}
+                    isError={
+                        form.nickname.length !== 0 && form.nickname.length < 2
+                    }
                     errorMsg='아이디를 2글자 이상 입력해주세요.'
                     onChange={onChangeInput}
                     required
