@@ -6,7 +6,7 @@ const RadioButton = ({ className, radioList, onChange }: RadioButtonProps) => {
         <S.RadioButtonContainer className={className}>
             {radioList.map((radio, idx) => (
                 <label htmlFor={radio.id} key={idx}>
-                    {radio.label}
+                    <span>{radio.label}</span>
                     <input
                         id={radio.id}
                         type='radio'

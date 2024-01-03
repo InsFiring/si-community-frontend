@@ -10,6 +10,7 @@ export const theme: DefaultTheme = {
         HoverColor: '#CCAFD8',
 
         DefaultText: '#FFFFFF',
+        DefaultBlackText: '#000000',
         DisabledText: '#E5E5E5',
         FocusText: '#555555',
         ActiveText: '#555555',
