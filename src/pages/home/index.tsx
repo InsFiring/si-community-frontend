@@ -1,5 +1,7 @@
+import ImgUpload from '@/src/components/common/ImgUpload';
 import RadioButton from '@/src/components/common/RadioButton';
 import useInput from '@/src/hooks/useInput';
+import { useState } from 'react';
 
 const Home = () => {
     const { form, setForm, onChangeInput } = useInput([
@@ -18,6 +20,11 @@ const Home = () => {
             checked: false,
         },
     ]);
+
+    const [img, setImg] = useState({
+        file: '',
+        formDataImg: {},
+    });
 
     const onChangeRadioButton = (
         event: React.ChangeEvent<HTMLInputElement>,
@@ -38,6 +45,28 @@ const Home = () => {
         setForm(result);
     };
 
+    const onChangeImg = (event: any) => {
+        const { name } = event.target;
+        const formData = new FormData();
+        const fr = new FileReader();
+        const file = event.target.files[0];
+
+        if (file) {
+            fr.readAsDataURL(file);
+
+            fr.onload = () => {
+                if (typeof fr.result === 'string') {
+                    formData.append('file', file);
+                    setImg({
+                        ...img,
+                        [name]: fr.result,
+                        formDataImg: formData,
+                    });
+                }
+            };
+        }
+    };
+
     return (
         <>
             {/* <Modal
@@ -56,6 +85,13 @@ const Home = () => {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     onChangeRadioButton(e)
                 }
+            />
+            <ImgUpload
+                name='file'
+                file={img.file}
+                onChange={onChangeImg}
+                onClick={() => {}}
+                // isError={true}
             />
         </>
     );
