@@ -15,7 +15,7 @@ function useInput(initialValue: InputValueType) {
             setForm(value);
         }
     };
-    console.log('value', form);
+
     return { form, setForm, onChangeInput };
 }
 
