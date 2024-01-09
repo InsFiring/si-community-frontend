@@ -7,7 +7,6 @@ export const authApi = {
             instance
                 .post(`v1/users`, data)
                 .then((res) => {
-                    console.log('join test', res);
                     if (res.status !== 201) {
                         reject(res);
                     }
@@ -25,7 +24,6 @@ export const authApi = {
             instance
                 .post(`v1/users/signin`, data)
                 .then((res) => {
-                    console.log('login test', res);
                     if (res.status !== 200) {
                         reject(res);
                     }

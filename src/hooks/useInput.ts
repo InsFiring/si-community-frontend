@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
-// type InputValueType = string | number | object;
-type InputValueType = any;
+type InputValueType = string | number | object;
+// type InputValueType = any;
 
 function useInput(initialValue: InputValueType) {
     const [form, setForm] = useState<InputValueType>(initialValue);
