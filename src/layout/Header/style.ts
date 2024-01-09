@@ -1,3 +1,4 @@
+import { NotoM } from '@/src/styles/font';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
@@ -35,6 +36,26 @@ export const HeaderContainer = styled.header`
                 font-size: 12px;
                 white-space: nowrap;
             }
+        }
+    }
+
+    .user-content {
+        display: flex;
+        gap: 0px 12px;
+        align-items: center;
+
+        .user-name {
+            font-size: 12px;
+            font-family: ${NotoM.style.fontFamily};
+            white-space: nowrap;
+        }
+
+        .logout {
+            font-size: 12px;
+            line-height: 12px;
+            white-space: nowrap;
+            font-family: ${NotoM.style.fontFamily};
+            color: #fff;
         }
     }
 `;

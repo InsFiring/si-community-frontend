@@ -20,8 +20,6 @@ const SignIn = () => {
     const userInfoData = useRecoilValue(userInfoState);
     const setUserInfoState = useSetRecoilState(userInfoState);
 
-    console.log('userInfoData', userInfoData);
-
     const emailRegex: boolean = form.email.includes('@');
     const passwordRegex: boolean =
         /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$/.test(
