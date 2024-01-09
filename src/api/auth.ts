@@ -8,11 +8,11 @@ export const authApi = {
                 .post(`v1/users`, data)
                 .then((res) => {
                     console.log('join test', res);
-                    if (res.data.status.code !== 201) {
+                    if (res.status !== 201) {
                         reject(res);
                     }
 
-                    resolve(res);
+                    resolve(res.data);
                 })
                 .catch((err) => {
                     reject(err);
@@ -26,11 +26,11 @@ export const authApi = {
                 .post(`v1/users/signin`, data)
                 .then((res) => {
                     console.log('login test', res);
-                    if (res.data.status.code !== 201) {
+                    if (res.status !== 200) {
                         reject(res);
                     }
 
-                    resolve(res);
+                    resolve(res.data);
                 })
                 .catch((err) => {
                     reject(err);

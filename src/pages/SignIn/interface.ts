@@ -1,6 +1,4 @@
-export interface SignUpProps {
-    id: string;
+export interface SignInProps {
     email: string;
-    password: string;
-    rePassword: string;
+    current_password: string;
 }
