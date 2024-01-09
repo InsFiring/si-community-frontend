@@ -2,34 +2,68 @@ import { authApi } from '@/src/api/auth';
 import Button from '@/src/components/common/Button';
 import TextInput from '@/src/components/common/TextInput';
 import useInput from '@/src/hooks/useInput';
+import { userInfoState } from '@/src/store/user/state';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { SignInProps } from './interface';
 import * as S from './style';
 
 const SignIn = () => {
+    const router = useRouter();
+
     const { form, onChangeInput } = useInput({
         email: '',
-        password: '',
+        current_password: '',
     });
+
+    const userInfoData = useRecoilValue(userInfoState);
+    const setUserInfoState = useSetRecoilState(userInfoState);
+
+    console.log('userInfoData', userInfoData);
 
     const emailRegex: boolean = form.email.includes('@');
     const passwordRegex: boolean =
         /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,25}$/.test(
-            form.password,
+            form.current_password,
         );
 
     const isRegex = emailRegex && passwordRegex;
 
-    const login = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const { mutate: loginMutation } = useMutation(
+        async (form: SignInProps) => {
+            const userInfo = await authApi.postSignIn(form);
 
+            setUserInfoState({
+                ...userInfoData,
+                isLogin: true,
+                userId: userInfo.register_number,
+                nickname: userInfo.nickname,
+                email: userInfo.email,
+                company: userInfo.company,
+                type: '',
+            });
+        },
+        {
+            onError: (error: any) => {
+                console.log('error : ', error);
+            },
+            onSuccess: () => {
+                router.push('/home');
+                console.log('onSuccess');
+            },
+        },
+    );
+
+    const login = () => {
         if (!isRegex) {
             return;
         }
 
         try {
-            const postData = await authApi.postSignIn(form);
-            console.log('postData', postData);
+            const postData = loginMutation(form);
 
-            // todo:  백엔드 API 수정 완료되면 로그인 후 유저 정보 recoil 사용하여 저장 예정
+            return postData;
         } catch (err) {
             console.log('err', err);
         }
@@ -40,7 +74,8 @@ const SignIn = () => {
             <form
                 method='post'
                 onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-                    login(e);
+                    e.preventDefault();
+                    login();
                 }}
             >
                 <strong>로그인</strong>
@@ -56,9 +91,11 @@ const SignIn = () => {
                 />
                 <TextInput
                     label='비밀번호'
-                    name='password'
-                    value={form.password}
-                    isError={form.password.length !== 0 && !passwordRegex}
+                    name='current_password'
+                    value={form.current_password}
+                    isError={
+                        form.current_password?.length !== 0 && !passwordRegex
+                    }
                     errorMsg='비밀번호는 대소문자, 숫자, 특수기호를 포함한 8글자 이상입니다.'
                     type='password'
                     placeholder='비밀번호 입력'

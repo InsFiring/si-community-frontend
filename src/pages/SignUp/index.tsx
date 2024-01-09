@@ -33,10 +33,7 @@ const SignUp = () => {
 
         try {
             const postData = await authApi.postSignUp(form);
-            console.log('postData', postData);
-        } catch (err) {
-            console.log('err', err);
-        }
+        } catch (err) {}
     };
 
     return (
