@@ -6,9 +6,10 @@ import {
 import type { AppProps } from 'next/app';
 // import { Orbitron } from 'next/font/google';
 import Head from 'next/head';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
+import Loading from '../components/common/Loading';
 import Container from '../layout/Container/index';
 import { NotoB, NotoM, NotoR, RobotoB, RobotoM, RobotoR } from '../styles/font';
 import { GlobalStyle } from '../styles/global';
@@ -42,18 +43,20 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <RecoilRoot>
                         <ThemeProvider theme={theme}>
                             <GlobalStyle />
-                            <Container
-                                className={cls(
-                                    NotoR.className,
-                                    NotoM.className,
-                                    NotoB.className,
-                                    RobotoR.className,
-                                    RobotoM.className,
-                                    RobotoB.className,
-                                )}
-                            >
-                                <Component {...pageProps} />
-                            </Container>
+                            <Suspense fallback={<Loading />}>
+                                <Container
+                                    className={cls(
+                                        NotoR.className,
+                                        NotoM.className,
+                                        NotoB.className,
+                                        RobotoR.className,
+                                        RobotoM.className,
+                                        RobotoB.className,
+                                    )}
+                                >
+                                    <Component {...pageProps} />
+                                </Container>
+                            </Suspense>
                         </ThemeProvider>
                     </RecoilRoot>
                 </Hydrate>
