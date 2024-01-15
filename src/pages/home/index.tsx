@@ -1,4 +1,5 @@
 import ImgUpload from '@/src/components/common/ImgUpload';
+import Pagination from '@/src/components/common/Pagination';
 import RadioButton from '@/src/components/common/RadioButton';
 import useInput from '@/src/hooks/useInput';
 import { useState } from 'react';
@@ -25,7 +26,7 @@ const Home = () => {
         file: '',
         formDataImg: {},
     });
-
+    const [page, setPage] = useState<number>(1);
     const onChangeRadioButton = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
@@ -43,6 +44,11 @@ const Home = () => {
         });
 
         setForm(result);
+    };
+
+    const handleChangePage = (page: number) => {
+        page = 1;
+        return setPage(page);
     };
 
     const onChangeImg = (event: any) => {
@@ -92,6 +98,29 @@ const Home = () => {
                 onChange={onChangeImg}
                 onClick={() => {}}
                 // isError={true}
+            />
+            <Pagination
+                total={20}
+                limit={10}
+                isPerPage={true}
+                page={1}
+                perPageList={[
+                    {
+                        name: 10,
+                        value: 10,
+                    },
+                    {
+                        name: 30,
+                        value: 30,
+                    },
+                    {
+                        name: 50,
+                        value: 50,
+                    },
+                ]}
+                setPage={setPage}
+                onCheckedBtn={() => {}}
+                handleChangePage={handleChangePage}
             />
         </>
     );

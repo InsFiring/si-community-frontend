@@ -3,6 +3,6 @@ export interface BasicSelectProps {
     onChange: any;
     name: string;
     selectData: any;
-    value: string;
+    value: string | number | undefined;
     onClick?: any;
 }
