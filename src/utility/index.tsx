@@ -7,7 +7,7 @@ export const NavList = [
     {
         id: 2,
         content: '게시판',
-        url: '/board',
+        url: '/community',
     },
     {
         id: 3,

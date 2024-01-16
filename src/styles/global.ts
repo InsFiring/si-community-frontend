@@ -44,4 +44,20 @@ export const GlobalStyle = createGlobalStyle`
     background: none;
     border: none;
   }
+
+  label{
+    width: 100%;
+    font-size:14px;
+    color:${({ theme }) => theme.colors.ActiveText};
+    text-align:left;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 24px;
+    width: 100%;
+    height: 100%;
+  }
 `;

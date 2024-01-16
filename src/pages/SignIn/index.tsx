@@ -100,7 +100,7 @@ const SignIn = () => {
                     onChange={onChangeInput}
                     required
                 />
-                <div className=''>
+                <div className='btn-container'>
                     <Button onClick={() => {}}>취소</Button>
                     <Button
                         onClick={() => {}}

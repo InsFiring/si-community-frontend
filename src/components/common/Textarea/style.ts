@@ -21,7 +21,7 @@ export const TextareaContainer = styled.div<textareaStyleProps>`
     textarea {
         width: ${(props) => props.width};
         height: ${(props) => props.height};
-        color: ${({ theme }) => theme.colors.DefaultText};
+        color: ${({ theme }) => theme.colors.ActiveText};
         font-size: 18px;
         padding: 10px 0px 0px 10px;
         border: 2px solid ${({ theme }) => theme.colors.DisabledColor};

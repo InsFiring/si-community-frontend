@@ -1,4 +1,6 @@
+import Button from '@/src/components/common/Button';
 import ImgUpload from '@/src/components/common/ImgUpload';
+import Modal from '@/src/components/common/Modal';
 import Pagination from '@/src/components/common/Pagination';
 import RadioButton from '@/src/components/common/RadioButton';
 import useInput from '@/src/hooks/useInput';
@@ -26,7 +28,9 @@ const Home = () => {
         file: '',
         formDataImg: {},
     });
+
     const [page, setPage] = useState<number>(1);
+    const [isModal, setIsModal] = useState<boolean>(false);
     const onChangeRadioButton = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
@@ -75,17 +79,20 @@ const Home = () => {
 
     return (
         <>
-            {/* <Modal
-                title='Modal Title'
-                buttonContent={
-                    <>
-                        <Button onClick={() => {}}>취소</Button>
-                        <Button onClick={() => {}}>저장</Button>
-                    </>
-                }
-            >
-                <div>This is Modal Content</div>
-            </Modal> */}
+            {isModal && (
+                <Modal
+                    title='Modal Title'
+                    buttonContent={
+                        <>
+                            <Button onClick={() => {}}>취소</Button>
+                            <Button onClick={() => {}}>저장</Button>
+                        </>
+                    }
+                >
+                    <div>This is Modal Content</div>
+                </Modal>
+            )}
+
             <RadioButton
                 radioList={form}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

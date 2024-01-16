@@ -7,8 +7,8 @@ const Textarea = ({
     value,
     onChange,
     label,
-    width = '800px',
-    height = '400px',
+    width = '500px',
+    height = '250px',
     isError = false,
     errorMsg,
 }: textareaPorps) => {
