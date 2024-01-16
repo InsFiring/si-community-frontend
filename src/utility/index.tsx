@@ -33,3 +33,44 @@ export const UtilMenuList = [
         url: '/signin',
     },
 ];
+
+export const DummyData = [
+    {
+        article_id: 1,
+        company: 'company1',
+        contents: 'contents1',
+        createdAt: '2020-01-01',
+        deletedAt: {
+            time: 'string',
+            valid: true,
+        },
+        id: 1,
+        is_modified: 'is_modified',
+        likes: 0,
+        nickname: 'nickname',
+        ratings: 0,
+        title: 'title',
+        unlikes: 0,
+        updatedAt: 'updatedAt',
+        view_counts: 0,
+    },
+    {
+        article_id: 2,
+        company: 'company2',
+        contents: 'contents2',
+        createdAt: '2020-01-01',
+        deletedAt: {
+            time: 'string',
+            valid: true,
+        },
+        id: 2,
+        is_modified: 'is_modified',
+        likes: 0,
+        nickname: 'nickname',
+        ratings: 0,
+        title: 'title',
+        unlikes: 0,
+        updatedAt: 'updatedAt',
+        view_counts: 0,
+    },
+];
