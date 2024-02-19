@@ -74,3 +74,41 @@ export const DummyData = [
         view_counts: 0,
     },
 ];
+
+export const Ratings = [
+    {
+        id: 1,
+        value: 1,
+        label: 1,
+        name: 1,
+        checked: true,
+    },
+    {
+        id: 2,
+        value: 2,
+        label: 2,
+        name: 2,
+        checked: false,
+    },
+    {
+        id: 3,
+        value: 3,
+        label: 3,
+        name: 3,
+        checked: false,
+    },
+    {
+        id: 4,
+        value: 4,
+        label: 4,
+        name: 4,
+        checked: false,
+    },
+    {
+        id: 5,
+        value: 5,
+        label: 5,
+        name: 5,
+        checked: false,
+    },
+];

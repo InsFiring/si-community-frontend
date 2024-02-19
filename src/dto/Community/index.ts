@@ -1,4 +1,4 @@
-export interface AddCommunityProps {
+export interface AddCommunityDTO {
     title: string;
     company: string;
     contents: string;

@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 
-type InputValueType = string | number | object;
+type InputValueType = string | number | object | [];
 // type InputValueType = any;
 
 function useInput(initialValue: InputValueType) {
