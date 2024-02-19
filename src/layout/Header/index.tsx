@@ -22,7 +22,10 @@ const Header = ({ className }: HeaderProps) => {
             email: '',
             company: '',
             type: '',
+            token: '',
         });
+
+        router.push('/home');
     };
 
     useEffect(() => {
@@ -33,7 +36,7 @@ const Header = ({ className }: HeaderProps) => {
 
     return (
         <S.HeaderContainer className={className} suppressHydrationWarning>
-            <h1>
+            <h1 onClick={() => router.push('/home')}>
                 <SVG src='/svg/logo.svg'></SVG>
             </h1>
             <Nav />

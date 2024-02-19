@@ -11,6 +11,7 @@ export const userInfoData: userInfoProps = {
     email: '',
     company: '',
     type: '',
+    token: '',
 };
 
 export const userInfoState = atom<userInfoProps>({

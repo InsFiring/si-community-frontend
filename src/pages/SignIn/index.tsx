@@ -40,7 +40,10 @@ const SignIn = () => {
                 email: userInfo.email,
                 company: userInfo.company,
                 type: '',
+                token: userInfo.access_token,
             });
+
+            router.push('/home');
         },
         {
             onError: (error: any) => {

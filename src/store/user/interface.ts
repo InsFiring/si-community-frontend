@@ -5,4 +5,5 @@ export interface userInfoProps {
     email: string;
     company?: string;
     type: string;
+    token: string;
 }
