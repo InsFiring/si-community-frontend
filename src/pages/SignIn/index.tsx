@@ -30,20 +30,28 @@ const SignIn = () => {
 
     const { mutate: loginMutation } = useMutation(
         async (form: SignInProps) => {
-            const userInfo = await authApi.postSignIn(form);
+            if (!isRegex) {
+                return;
+            }
 
-            setUserInfoState({
-                ...userInfoData,
-                isLogin: true,
-                userId: userInfo.register_number,
-                nickname: userInfo.nickname,
-                email: userInfo.email,
-                company: userInfo.company,
-                type: '',
-                token: userInfo.access_token,
-            });
+            try {
+                const userInfo = await authApi.postSignIn(form);
 
-            router.push('/home');
+                setUserInfoState({
+                    ...userInfoData,
+                    isLogin: true,
+                    userId: userInfo.register_number,
+                    nickname: userInfo.nickname,
+                    email: userInfo.email,
+                    company: userInfo.company,
+                    type: '',
+                    token: userInfo.access_token,
+                });
+
+                router.push('/home');
+            } catch (err) {
+                console.log('err', err);
+            }
         },
         {
             onError: (error: any) => {
@@ -56,27 +64,13 @@ const SignIn = () => {
         },
     );
 
-    const login = () => {
-        if (!isRegex) {
-            return;
-        }
-
-        try {
-            const postData = loginMutation(form);
-
-            return postData;
-        } catch (err) {
-            console.log('err', err);
-        }
-    };
-
     return (
         <S.SignInContainer>
             <form
                 method='post'
                 onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
                     e.preventDefault();
-                    login();
+                    loginMutation();
                 }}
             >
                 <strong>로그인</strong>
