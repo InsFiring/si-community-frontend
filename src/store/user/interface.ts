@@ -1,4 +1,4 @@
-export interface userInfoProps {
+export interface UserInfoProps {
     isLogin: boolean;
     userId: number | null;
     nickname: string;
